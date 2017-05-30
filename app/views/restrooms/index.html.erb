@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Restrooms
+    <a href="/restrooms/new" class="btn btn-lg btn-success">New Restroom</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Location</th>
+        <th>Standalone</th>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @restrooms.each do |restroom| %>
+      <tr>
+        <td><%= restroom.location %></td>
+        <td><%= restroom.standalone %></td>
+        <td><%= restroom.name %></td>
+        <td>
+          <a href="/restrooms/<%= restroom.id %>" class="btn btn-primary">Show</a>
+          <a href="/restrooms/<%= restroom.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_restroom/<%= restroom.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
