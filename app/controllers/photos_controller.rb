@@ -1,13 +1,14 @@
+
 class PhotosController < ApplicationController
   def index
     @photos = Photo.all
-
+    @comment = Comment.new
     render("photos/index.html.erb")
   end
 
   def show
     @photo = Photo.find(params[:id])
-
+    @comment = Comment.new
     render("photos/show.html.erb")
   end
 
@@ -20,8 +21,8 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new
 
-    @photo.comment_id = params[:comment_id]
-    @photo.photo_link = params[:photo_link]
+    @photo.image = params[:image]
+    @photo.user_id = params[:user_id]
 
     save_status = @photo.save
 
@@ -41,8 +42,8 @@ class PhotosController < ApplicationController
   def update
     @photo = Photo.find(params[:id])
 
-    @photo.comment_id = params[:comment_id]
-    @photo.photo_link = params[:photo_link]
+    @photo.image = params[:image]
+    @photo.user_id = params[:user_id]
 
     save_status = @photo.save
 
